@@ -15,6 +15,7 @@ bot = di.Client(token=TOKEN, intents=Intents.ALL | Intents.GUILD_MESSAGE_CONTENT
 logging.basicConfig(filename=c.logdir + c.logfilename, level=c.logginglevel, format='%(levelname)s - %(asctime)s: %(message)s', datefmt='%d.%m.%Y %H:%M:%S')
 commandchannel = None
 bot.load("interactions.ext.persistence", cipher_key=c.cipher_key)
+bot.load("shedules")
 
 @bot.event
 async def on_ready():
@@ -54,7 +55,6 @@ async def button_math(ctx: di.CommandContext, package: int):
     but_min = b.button_min(bot=bot, number=number)
     row = di.ActionRow(components=[but_plus, but_min])
     await ctx.edit(f"Die Zahl ist **{number}**", components=row)
-
 
 
 if __name__ == "__main__":
